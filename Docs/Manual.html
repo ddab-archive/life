@@ -1,0 +1,265 @@
+<!DOCTYPE HTML>
+
+<!--
+  Distributed under the MIT license.
+  See the accompanying LICENSE file or go to
+  http://delphidabbler.mit-license.org/1992-2015/
+-->
+
+<html>
+
+<head>
+
+<meta charset="UTF-8" />
+
+<title>Game Of Life Manual</title>
+
+<style type="text/css">
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Helvetica, Arial, sans-serif;
+  font-size: 10pt;
+  font-weight: normal;
+  margin: 1em 3em;
+  padding: 0;
+  line-height: 160%;
+}
+header {
+  padding: 0;
+  background-color: #f5f5f5;
+  border-radius: 16px;
+  border: 1px silver solid;
+  display: block;
+}
+#title {
+  font-size: 250%;
+  font-weight: bold;
+  text-align: center;
+  margin: 0.5em;
+}
+header nav {
+  display: block;
+  margin: 1em;
+  font-color: black;
+  font-weight: normal;
+}
+header nav ul {
+  list-style: none;
+  margin: 0;
+  text-align: center;
+}
+header nav li {
+  display: inline;
+}
+header nav a {
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 0.5em;
+}
+header nav a:hover {
+  background-color: #eeeeee;
+}
+section {
+  display: block;
+  margin: 2em 0 2em 0;
+  padding: 0.5em;
+  background-color: transparent;
+  border-radius: 16px;
+  border: 1px silver solid;
+}
+h1 {
+  font-weight: bold;
+  font-size: 240%;
+  padding: 0 0 0.25em 0;
+  margin: 1em 0;
+  border-bottom: 1px silver solid;
+}
+section h1 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  padding: 0.25em 0 0.5em 0;
+}
+ul {
+  font-size: 100%;
+  padding: 0;
+  margin: 0.75em 0 0.75em 2em;
+}
+li {
+  padding: 0;
+  margin: 0.75em 0;
+}
+a {
+  color: rgb(46, 46, 192);
+}
+em {
+  font-style: italic;
+}
+em.btn {
+  background-color: #eee;
+  padding: 0 4px 1px 4px;
+  border: 1px solid #ccc;
+  border-radius:4px;
+}
+strong {
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div id="title">DelphiDabbler Game Of Life Manual</div>
+
+<nav id="contents">
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#running">Setting up and running a game</a></li>
+<li><a href="#files">Saving and loading games</a></li>
+<li><a href="#rules">Rules</a></li>
+<li><a href="#colours">Colour schemes</a></li>
+<li><a href="#help">Help</a></li>
+<li><a href="#exit">Exiting the program</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+</nav>
+
+</header>
+
+<section id="introduction">
+
+<h1>Introduction</h1>
+
+<p>This program demonstrates the Game of Life on a 21&times;21 grid.</p>
+
+<p>A bit of background before we get started. This program has roots going back to a DOS program written in 1992. The core of the present program was written in 1997 and 1998, with only slight changes since. The programming is not something the author is proud of, going back as it does to early days of learning object oriented programming.</p>
+
+<p>What's more the small grid is a left over from a time when PCs were so slow that calculating each generation took some appreciable time. This grid size seemed reasonable for the processing power, but it's really much too small.</p>
+
+<p>Actually, the only reason the program is still around is that it's a bit of personal history. Not very good, but the author can't bear to throw it out! However, it won't be developed any further and is not supported. So no questions, suggestions or bug reports please.</p>
+
+<p>You have been warned!</p>
+
+</section>
+
+<section id="running">
+
+<h1>Setting up and running a game</h1>
+
+<p>The game starts with an empty grid. &quot;Life forms&quot; are placed on the grid by double clicking the cell where a life form is required or by using the <em class="btn">Create</em> button. Life forms can be removed by double clicking the cell again or by using the <em class="btn">Kill</em> button.</p>
+
+<p>Once all life forms are placed the game can be started. This is done by clicking the <em class="btn">Next&nbsp;Generation</em> button. The program then calculates which life forms die and which are born according the rule that is currently in force. The next generation is then displayed. Successive generations can be displayed by repeatedly clicking the <em class="btn">Next&nbsp;Generation</em> button.</p>
+
+<p>Life forms can be added to or removed from the game at any stage.</p>
+
+<p>Information about each generation is displayed in the <em>Generation Info</em> box. Information about the currently highlighted cell is displayed in the <em>Square Info</em> panel. A cell is highlighted by single-clicking it. The cell remains highlighted until another cell is clicked. The <em>Square Info</em> panel is updated whenever the grid changes, either because of a new generation or because life forms are added or removed. When a group of cells are selected this information is not available.</p>
+
+<p>A snapshot of the current generation can be taken by clicking the <em class="btn">Snapshot</em> button. The game can be replayed from this snapshot. The snapshot is preserved only until another snapshot is taken, a new game is opened, the game is cleared or the program is halted.</p>
+
+<p>Clicking the <em class="btn">Replay</em> button re-runs the game. If a snapshot has been taken you are given the choice of whether to replay from the snapshot or the start of the game. If no snapshot has been taken then the game is always replayed from the start.</p>
+
+<p>The current game can be cleared by clicking the <em class="btn">Clear</em> button. This also clears any snapshot.</p>
+
+</section>
+
+<section id="files">
+
+<h1>Saving and loading games</h1>
+
+<p>Games can be loaded from and saved to disk.</p>
+
+<p>To save a game click the <em class="btn">Save</em> toolbar button. Doing so displays the <em>Save Options</em> dialogue box where you choose whether to save the start of the game or the current generation. If you have taken a snapshot you may also choose to save that. Clicking <em class="btn">OK</em> displays a standard Windows <em>Save</em> dialogue box where you choose the file name.</p>
+
+<p>To open a previously saved game, click the <em class="btn">Open</em> toolbar button. This displays a standard Windows <em>Open</em> dialogue box from where you can choose the required file.</p>
+
+</section>
+
+<section id="rules">
+
+<h1>Rules</h1>
+
+<p>The program comes with the ability to run the game using John Conway's Game Of Life rules. However you can also define and use your own.</p>
+
+<p>To do this click the <em class="btn">Rules</em> toolbar button to open the <em>Rules</em> dialogue box. Names of available rules are listed in the <em>Rule</em> combo box. Details of the currently selected rule are displayed in the check boxes. You can edit these rules to decide how the game determines whether a new life form is born or an existing life form dies.</p>
+
+<p>The check boxes represent the number of neighbours a cell must have for the rule to be activated. The <em>birth rule</em> check boxes determine how many neighbouring life forms an empty cell must have for a new life form to be born. The <em>survival rule</em> determines how many neighbouring life forms a cell containing a life form must have for the life form to die.</p>
+
+<p>For example the <em>Game Of Life</em> rules specify that if a blank cell has three neighbouring life forms then a new life form is born while a life-form with 2 or 3 neighbouring life forms will die. In this case the <em>birth rule</em> column has only check box 3 checked while the <em>survival rule</em> column has check boxes 2 and 3 checked.</p>
+
+<p>You create your own rules by checking and clearing the check boxes. To get an English description of your rule click the <em class="btn">Explain</em> button. Click the <em class="btn">Save&nbsp;As</em> button to save a rule you have edited under a new name or click <em class="btn">Save</em> to overwrite the existing rule. Clicking <em class="btn">Save&nbsp;As</em> brings up a dialogue box where you can name the rule or select an existing rule to overwrite.</p>
+
+<p>The selected rule can be deleted using the <em class="btn">Delete</em> button.</p>
+
+<p>To apply a rule to the current game, select it's name in the <em>Rule</em> combo box then click the <em class="btn">Apply</em> button. Note that clicking the <em class="btn">Close</em> button simply closes the dialogue box – it <strong>does not</strong> use the selected rule for the current game.</p>
+
+<p>You may not delete or modify the built in <em>Game Of Life</em> rule.</p>
+
+<p>The current rule is displayed in the main window's status bar. Double clicking the text in the status bar has the same effect as clicking the <em class="btn">Rules</em> toolbar button.</p>
+
+<p>Custom rules are stored in the program's configuration file, so they persist between sessions.</p>
+
+</section>
+
+<section id="colours">
+
+<h1>Colour schemes</h1>
+
+<p>The colour scheme used for the game grid can be customised by clicking the <em class="btn">Colours</em> toolbar button to display the <em>Colour Schemes</em> dialogue box.</p>
+
+<p>Available schemes can be selected from the <em>Scheme</em> drop-down list. Clicking <em class="btn">OK</em> closes the dialogue box and applies the selected scheme to the game grid. Click <em class="btn">Cancel</em> to leave the current colour scheme unchanged.</p>
+
+<p>New colour schemes are created using the controls and grid below to drop-down list. Select the element you want to change from the <em>Current element</em> drop-down list then select the desired colour from the <em>Colour</em> drop-down list. Repeat this for each element you want to change.</p>
+
+<p>A short cut to choosing a grid element is to click on the small grid as follows:</p>
+
+<ul>
+<li>Click the square containing the life form to select the <em>Life form</em> element.</li>
+<li>Click the square with the dashed highlight to select the <em>Highlight</em> element.</li>
+<li>Click any other square to select either the <em>Background</em> or <em>Grid line</em> elements. Clicking the square repeatedly toggles between the two elements.</li>
+</ul>
+
+<p>Notice that as soon as you change the colour of one of the elements the <em>Scheme</em> drop-down list will clear, indicating that you have a new theme that has not yet been named.</p>
+
+<p>Once you have created your scheme click the <em class="btn">Save&nbsp;As</em> button. This displays a dialogue box where you can enter a name for the scheme or choose an existing scheme name to overwrite.</p>
+
+<p>You can delete any of your user defined themes by selecting it in the <em>Scheme</em> drop-down list and clicking the <em class="btn">Delete</em> button.</p>
+
+<p>Note that the built in <em>Default</em> theme can't be deleted or overwritten.</p>
+
+<p>You don't have to name a scheme – you can simply create it and click <em class="btn">OK</em> to apply it. That is useful if you want to see what the scheme looks like in the main window, but it's a good idea to save any scheme you like to avoid accidentally overwriting it.</p>
+
+<p>Colour schemes, including one unnamed scheme, are stored in the program's configuration file and so persist between sessions.</p>
+
+<p>The name of current colour scheme (or &quot;&lt;un-named&gt;&quot;) is displayed in the main window's status bar. Double clicking the text in the status bar has the same effect as clicking the <em class="btn">Colours</em> toolbar button.</p>
+
+</section>
+
+<section id="help">
+
+<h1>Help</h1>
+
+<p>Clicking the <em class="btn">Help</em> button displays this document while clicking the <em class="btn">About</em> button displays the program's about box.</p>
+
+</section>
+
+<section id="exit">
+
+<h1>Exiting the program</h1>
+
+<p>To close the program click the <em class="btn">Exit</em> toolbar button, click the window's close button or press <em>Alt+F4</em>.</p>
+
+<p>A prompt will be displayed asking you to confirm that you want to close the program. Admittedly that's irritating, but it does give you a chance to go back if you have forgotten to save the game. The program is far too stupid to detect whether or not a game has been saved!</p>
+
+</section>
+
+<section id="license">
+
+<h1>License</h1>
+
+<p>This program is open source and is released under the very permissive MIT license. See <a href="http://delphidabbler.mit-license.org/1992-2015/">http://delphidabbler.mit-license.org/1992-2015/</a> for details of the license and copyright.</p>
+
+</section>
+
+</body>
+
+</html>

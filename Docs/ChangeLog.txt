@@ -1,0 +1,184 @@
+; ------------------------------------------------------------------------------
+; Change log for Game Of Life
+;
+; $Rev: 81 $
+; $Date: 2015-11-29 11:56:26 +0000 (Sun, 29 Nov 2015) $
+; ------------------------------------------------------------------------------
+
+v5.2 of 29 November 2015
+Released 29 November 2015
++ User interface changes:
+  - Removed main menu and customisable button bar. Replaced them with a single, non-customisable, toolbar with new glyphs.
+  - Removed option to hide status bar.
+  - Removed pop-up menu from game grid.
+  - Font changed to Tahoma throughout the program.
+  - Changed to uses OS's themed UI.
+  - All dialogue boxes are now centred over the main window.
+  - Removed all glyphs from buttons displayed in dialogue boxes.
+  - Fixed prompt in dialogue box used to save rules so that it no longer refers to (colour) schemes.
+  - Application title removed from dialogue boxes.
+  - Program exit confirmation dialogue box now prompts to save current game.
++ Program now writes its config data to the per-user application data directory when installed in Program Files or Common Files directories, fixing the problem of attempting to write to a write-protected directory. It continues to write config data to its install directory when installed elsewhere, so it can be used as a portable application.
++ Obsolete WinHelp help system removed and replaced by a manual in HTML format. The main window's help button displays the manual in the user's default browser.
++ Fixed an access violation bug.
++ Updated program's icon: tweaked colour and added support for multiple icon sizes.
++ Some refactoring: much renaming, added "actions" to main form and changed how resources are handled.
++ Converted to compile with Delphi XE: text is now processed in Unicode format and some obsolete code that had been required by early Delphis was removed.
++ Added application manifest and flagged program as compatible with Windows 10 and earlier.
++ Re-licensed program under MIT license: http://delphidabbler.mit-license.org/1992-2015/.
++ Updated and re-organised documentation.
++ Added makefile.
+
+v5.1 of 20 April 2003
+Released 20 April 2003
++ Converted to 32 bit application.
++ Modified user interface to give more of a Windows 95 look and feel.
+
+v5.0 of 17 August 1998
+Released 01 April 1999
++ Major revision of program.
++ The main new feature is the addition of user defined rules which govern births and deaths of life-forms. The original Game of Life rule is provided as a default.
++ A new engine was introduced to manage the program's colour schemes - and a similar one manages the list of rules.
++ Some changes were made to the interface:
+  - Some menu names were slighty altered and a new option to edit rules was introduced.
+  - Status bar was divided into two sections to display information about colour scheme and current rule. Double clicking the appropriate section displays either the rule or colour scheme dialogs.
+  - Game grid now appears raised rather than lowered.
+  - Colour schemes dialog box totally redseigned with a thumbnail of each colour scheme now appearing in the drop down list of schemes. Long scheme names now word-wrap.
+  - All dialog boxes are constrained to remain wholly on screen.
++ A new format for naming colour schemes in ini file was adopted, based on that used for rules.
++ The ini file now has new format.
++ Changed file format for saved games - incompatible with earlier versions.
++ Added version information to the program.
+
+v4.6 of 02 April 1998
+Not released
++ Removed ini file handling from Setup unit to separate unit. The Setup unit was now dedicated to handling the colour scheme dialog box and was therefore renamed to ColSchm.
+
+v4.5 of 02 April 1998
+Not released
++ Made status bar's pop-up menu display a different help topic depending on which part of bar is right-clicked. Right-clicking on the Colour Schemes area causes selection of help topic on pop-up menu to display information about colour schemes while right-clicking anywhere else on the status bar leads to a pop-up menu with help about the status bar.
++ Double clicking on colour schemes area of status bar panel now causes Colour Schemes dialog box to be displayed.
+
+v4.4 of 29 March 1998
+Not released
++ Added a help item to Status Bar and Command Bar popup menus and made display relevant help topic.
+
+v4.3 of 29 March 1998
+Not released
++ Made program able to show or hide status bar.
++ Made status bar visibility persistent by writing state to ini file.
++ Gave status bar a pop-up menu with menu item to hide the bar.
+
+v4.2 of 29 March 1998
+Not released
++ Made command bar customisable and added new menu item and command bar pop-up menu to access this feature.
++ Enabled command bar to be hidden by means of a pop-up menu.
+
+v4.1 of 27 March 1998
+Not released
++ Gave each life-form an "age" which is displayed on main window.
++ Fixed a cell selection bug.
+
+v4.0 of 27 March 1998
+Not released
++ Major program update.
++ Added menu bar.
++ WinHelp based help system provided.
++ Speed buttons now duplicate some menu commands and some additional commands were added.
++ About box now displayed from menu.
++ Rationalised design and placing of buttons.
++ Added pop-up menu for game grid.
++ Gave option to have "Command Bar" (containing speed buttons) hidden or displayed.
++ Added a status bar.
+
+v3.5 of 22 February 1998
+Not released
++ System "makeover" - udpated look of system to be consistent as follows:
+  - heavy font replaced by a light font throughout
+  - button positioning on dialog boxes made consistent
+  - button captions & shortcuts made consistent
+  - system menus now used on all dialog boxes
+  - position of dialog boxes made relative to parent form
++ Removed About box form and replaced by PJ About component.
++ Altered code of Help unit and some resource strings to accommodate changes.
+
+v3.4 of 22 February 1998
+Not released
++ Re-wrote grid display mechanism, using hourglass for lengthy redraws. Grid is now only redrawn on closing setup dialog if colour scheme changed.
+
+v3.3 of 21 February 1998
+Not released
++ Extensively revised main form to allow user to drag out a selection of cells and to either fill with life-forms or to kill all life-forms in selection. Added two new buttons, "Create cell/all" and "Kill cell/all" (captions depend on whether single cell or multiple selection is enabled).
++ Updated the help text to describe changes.
+
+v3.2 of 21 February 1998
+Not released
++ Added new Save Scheme dialog box which gets name of a scheme to be saved from user when Set-up dialog box needs to save a scheme. This new dialog box replaces previous InputQuery call. The new dialog allows user to select from exiting scheme names as well as entering a new name.
+
+v3.1 of 21 February 1998
+Not released
++ Made major update to set-up dialog box.
++ Fixed memory leak bug in main unit where snapshot and start-of-game instances were not freed on termination.
++ Fixed bug in calculation unit - inherited constructor was not called in class constructor.
+
+v3.0 of 28 July 1997
+Not released
++ Significant upgrade - added several new facilities
++ Added "Snapshot" facility to record state of play in any one generation.
++ Added "Replay" facility to replay the game from the start, or from any snapshot.
++ Games can now be saved in any of the following states: start of game (after life forms placed and before first generation), latest snapshot (if any) and currently displayed generation.
++ Games can also be loaded from disk. The game is loaded as if the life-forms on the saved game had just been placed by the user on a newly cleared grid - ie in generation zero.
++ A game can be reset.
++ Reorganised main window to have a "command bar" across top of window containing buttons for Load, Save, Clear, Setup, Help and Exit.
++ The game commands Next Generation, Replay and Snapshot are placed in the body of the window.
++ Added an about box to the program, accessed via the help dialog box.
++ Added new exception class to TGameOfLife (to trap errors) and added three new dialog box units.
++ Placed some version and copyright information in a new resource file, along with certain bitmaps and the error messages used by the TGameOfLife class.
+
+v2.7 of 26 July 1997
+Not released
++ Modified the set-up dialog code so that selecting the same colour scheme again will re-load it and display will revert to its oiginal colours.
++ Changed Set up dialog box so that all buttons have glyphs and re-arranged layout accordingly.
++ Also added description of all facilities of the Setup dialog to the help dialog.
++ Improved appearance of main window.
+
+v2.6 of 26 July 1997
+Not released
++ Re-organised game engine into a class TGameOfLife. This involved a total restructuing of the Calc unit and a total rewrite of some of the code.
++ Main form code was altered to accommodate changes to the game engine.
+
+v2.5 of 25 July 1997
+Not released
++ Added facility to save and load program colour settings as named colour schemes in the Life.ini file stored in the same directory as the program.
+
+v2.4 of 22 July 1997
+Not released
++ Added dialog box with which to customise the game grid colour scheme.
+
+v2.3 of 21 July 1997
+Not released
++ Altered help dialog box to be larger and more informative.
++ Removed system menu and repositioned closure button.
+
+v2.2 of 21 July 1997
+Not released
++ Altered program's "game-board" display mechanism to speed it up and improve appearance.
++ Modified form arrangment to balance new "game-board" display size.
++ Made all buttons display glyphs.
+
+v2.1 of 21 July 1997
+Not released
++ Altered program to enable it to be minimised.
++ Ensured all buttons have a keyboard shortcut.
++ Changed name and glyph of help screen cancel button.
++ Added application title that is displayed when application is minimised.
++ Added customs icon.
+
+v2.0 of 03 March 1997
+Not released
++ Total re-write as a Windows 3.1 program.
++ Uses core calculation code from v1.0.
+
+v1.0 of 18 May 1992
+Released 01 April 1999
++ Original DOS program - compiled with Turbo Pascal.

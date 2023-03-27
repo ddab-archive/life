@@ -1,0 +1,243 @@
+================================================================================
+
+Game Of Life Pre-SVN Project Changes
+
+$Rev: 13 $
+$Date: 2015-11-23 01:18:31 +0000 (Mon, 23 Nov 2015) $
+
+================================================================================
+
+This file records which source files changed across versions of the Game Of Life
+project.
+
+For details of the changes to the files see PreSVNFileChanges.txt. For a
+summary of the changes across different versions of the project see
+ChangeLog.txt.
+
+--------------------------------------------------------------------------------
+v1.0 of 18 May 1992
+--------------------------------------------------------------------------------
+New:     Life.pas v1.0
+
+--------------------------------------------------------------------------------
+v2.0 of 03 Mar 1997
+--------------------------------------------------------------------------------
+Updated: Calc.pas v2.0, renamed from Life.pas
+New:     Help.pas v1.0
+New:     Life.dpr v1.0
+New:     MainForm.pas v1.0
+
+--------------------------------------------------------------------------------
+v2.1 of 21 Jul 1997
+--------------------------------------------------------------------------------
+Updated: Help.pas v1.1
+Updated: Life.dpr v1.1
+Updated: MainForm.pas v1.1
+
+--------------------------------------------------------------------------------
+v2.2 of 21 Jul 1997
+--------------------------------------------------------------------------------
+Updated: MainForm.pas v1.2
+
+--------------------------------------------------------------------------------
+v2.3 of 21 Jul 1997
+--------------------------------------------------------------------------------
+Updated: Help.pas v1.2
+
+--------------------------------------------------------------------------------
+v2.4 of 22 Jul 1997
+--------------------------------------------------------------------------------
+Updated: Help.pas v1.2a
+Updated: Life.dpr v1.2
+Updated: MainForm.pas v1.3
+New:     Setup.pas v1.0
+
+--------------------------------------------------------------------------------
+v2.5 of 25 Jul 1997
+--------------------------------------------------------------------------------
+Updated: Setup.pas v1.1
+
+--------------------------------------------------------------------------------
+v2.6 of 26 Jul 1997
+--------------------------------------------------------------------------------
+Updated: Calc.pas v3.0
+Updated: MainForm.pas v1.4
+
+--------------------------------------------------------------------------------
+v2.7 of 26 Jul 1997
+--------------------------------------------------------------------------------
+Updated: Help.pas v1.2b
+Updated: MainForm.pas v1.4a
+Updated: Setup.pas v1.2
+
+--------------------------------------------------------------------------------
+v3.0 of 28 Jul 1997
+--------------------------------------------------------------------------------
+New:      About.pas v1.0
+Updated:  Calc.pas v3.1
+Updated:  Help.pas v1.3
+Updated:  Life.dpr v1.3
+Updated:  MainForm.pas v2.0
+Updated:  Setup.pas v1.3
+New:      Replay.pas v1.0
+New:      Resource.rc v1.0
+New:      Resource.inc v1.0
+New:      SaveWhat.pas v1.0
+
+--------------------------------------------------------------------------------
+v3.1 of 21 Feb 1998
+--------------------------------------------------------------------------------
+Updated:  Calc.pas v3.2
+Updated:  MainForm.pas v2.1
+Updated:  Resource.rc v1.1
+Updated:  Setup.pas v2.0
+
+--------------------------------------------------------------------------------
+v3.2 of 21 Feb 1998
+--------------------------------------------------------------------------------
+Updated:  Life.dpr v1.4
+Updated:  Resource.rc v1.2
+New:      SaveSchm.pas v1.0
+Updated:  Setup.pas v2.1
+
+--------------------------------------------------------------------------------
+v3.3 of 21 Feb 1998
+--------------------------------------------------------------------------------
+Updated:  Help.pas v1.3a
+Updated:  MainForm.pas v3.0
+Updated:  Resource.rc v1.3
+
+--------------------------------------------------------------------------------
+v3.4 of 22 Feb 1998
+--------------------------------------------------------------------------------
+Updated:  MainForm.pas v3.1
+Updated:  Resource.rc v1.4
+Updated:  Setup.pas v2.2
+
+--------------------------------------------------------------------------------
+v3.5 of 22 Feb 1998
+--------------------------------------------------------------------------------
+Removed:  About.pas
+Updated:  Help.pas v1.4
+Updated:  Life.dpr v1.5
+Updated:  MainForm.pas v3.2
+Updated:  Replay.pas v1.0a
+Updated:  Resource.rc v1.5
+Updated:  SaveSchm.pas v1.0a
+Updated:  SaveWhat.pas v1.0a
+Updated:  Setup.pas v2.2a
+
+--------------------------------------------------------------------------------
+v4.0 of 27 Mar 1998
+--------------------------------------------------------------------------------
+Removed:  Help.pas
+Updated:  Life.dpr v1.6
+Updated:  MainForm.pas v4.0
+Updated:  Replay.pas v1.1
+Updated:  Resource.rc v1.6
+Updated:  SaveSchm.pas v1.1
+Updated:  SaveWhat.pas v1.1
+Updated:  Setup.pas v2.3
+New:      Help/Life.hpj v1.0
+New:      Help/Life.inc v1.0
+New:      Help/Life.rtf of 27 Mar 1998
+
+--------------------------------------------------------------------------------
+v4.1 of 27 Mar 1998
+--------------------------------------------------------------------------------
+Updated:  Calc.pas v3.3
+Updated:  MainForm.pas v4.1
+Updated:  Resource.inc v1.1
+Updated:  Resource.rc v1.7
+
+--------------------------------------------------------------------------------
+v4.2 of 29 Mar 1998
+--------------------------------------------------------------------------------
+New:      EditCBar.pas v1.0
+Updated:  Life.dpr v1.7
+Updated:  MainForm.pas v4.2
+Updated:  Setup.pas v2.4
+New:      Shared.pas v1.0
+Updated:  Resource.inc v1.2
+Updated:  Resource.rc v1.8
+Updated:  Help/Life.hpj v1.1
+Updated:  Help/Life.inc v1.1
+Updated:  Help/Life.rtf of 29 Mar 1998
+
+--------------------------------------------------------------------------------
+v4.3 of 29 Mar 1998
+--------------------------------------------------------------------------------
+Updated:  MainForm.pas v4.3
+Updated:  Resource.rc v1.9
+Updated:  Setup.pas v2.5
+Updated:  Help/Life.hpj v1.2
+Updated:  Help/Life.inc v1.2
+Updated:  Help/Life.rtf of 29 Mar 1998
+
+--------------------------------------------------------------------------------
+v4.4 of 29 Mar 1998
+--------------------------------------------------------------------------------
+Updated:  MainForm.pas v4.4
+Updated:  Resource.rc v1.10
+Updated:  Help/Life.rtf of 29 Mar 1998
+
+--------------------------------------------------------------------------------
+v4.5 of 02 Apr 1998
+--------------------------------------------------------------------------------
+Updated:  MainForm.pas v4.5
+Updated:  Resource.rc v1.11
+Updated:  Help/Life.rtf of 02 Apr 1998
+
+--------------------------------------------------------------------------------
+v4.6 of 02 Apr 1998
+--------------------------------------------------------------------------------
+Updated:  ColSchm.pas v2.6, renamed from Setup.pas
+New:      Config.pas v1.0
+Updated:  EditCBar.pas v1.1
+Updated:  Life.dpr v1.8
+Updated:  MainForm.pas v4.6
+Updated:  Resource.rc v1.12
+Updated:  Shared.pas v1.1
+
+--------------------------------------------------------------------------------
+v5.0 of 17 Aug 1998
+--------------------------------------------------------------------------------
+New:      AppRule.pas v1.0
+Updated:  Calc.pas v3.4
+New:      Colours.pas v1.0
+Updated:  ColSchm.pas v3.0
+Updated:  Config.pas v2.0
+Updated:  EditCBar.pas v1.2
+New:      EditRule.pas v1.0
+New:      ExplRule.pas v1.0
+Updated:  Life.dpr v1.9
+Updated:  MainForm.pas v5.0
+Updated:  Replay.pas v1.2
+New:      Rules.pas v1.0
+Updated:  SaveIni.pas v2.0, renamed from SaveSchm.pas
+Updated:  SaveWhat.pas v1.2
+Updated:  Shared.pas v1.2
+Updated:  Resource.inc v1.3
+Updated:  Resource.rc v1.13
+New:      Version.vi v1.0
+Updated:  Help/Life.hpj v1.3
+Updated:  Help/Life.inc v1.3
+Updated:  Help/Life.rtf of 17 Aug 1998
+
+--------------------------------------------------------------------------------
+v5.1 of 20 Apr 2003
+--------------------------------------------------------------------------------
+Updated:  AppRule.pas v1.1
+Updated:  Calc.pas v3.5
+Updated:  ColSchm.pas v3.1
+Updated:  EditCBar.pas v1.3
+Updated:  EditRule.pas v1.1
+Updated:  ExplRule.pas v1.1
+Updated:  MainForm.pas v5.1
+Updated:  Replay.pas v1.3
+Updated:  SaveIni.pas v2.1
+Updated:  SaveWhat.pas v1.3
+Updated:  Version.vi v1.1
+Updated:  Help/Life.hpj v1.4
+
+--------------------------------------------------------------------------------

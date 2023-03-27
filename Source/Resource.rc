@@ -1,0 +1,21 @@
+/*
+  Distributed under the MIT license.
+  See the accompanying LICENSE file or go to
+  http://delphidabbler.mit-license.org/1992-2015/
+*/
+
+/*
+  Main icon
+*/
+MAINICON ICON "Images/Life.ico"
+
+/*
+  Dynamically loaded images
+*/
+SNAPSHOT0 BITMAP "Images/Snapshot0.bmp"
+SNAPSHOT1 BITMAP "Images/Snapshot1.bmp"
+
+/*
+  Application manifest file
+*/
+1 24 "Life.manifest"

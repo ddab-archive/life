@@ -1,0 +1,667 @@
+================================================================================
+
+Game Of Life Pre-SVN File Changes
+
+$Rev: 13 $
+$Date: 2015-11-23 01:18:31 +0000 (Mon, 23 Nov 2015) $
+
+================================================================================
+
+This file lists changes to all known files for which information is available,
+going all the way back to Game Of Life v1.
+
+For a description of which files formed which releases see
+PreSVNProjectChanges.txt. For a summary of the changes across different versions
+of the project see ChangeLog.txt.
+
+All file names are relative to the Source directory.
+
+--------------------------------------------------------------------------------
+About.pas
+--------------------------------------------------------------------------------
+v1.0  of 28 Jul 1997 - Original version of about box that reads version and
+                       copyright information from resources.
+         22 Feb 1998 - Removed from project
+
+--------------------------------------------------------------------------------
+AppRule.pas
+--------------------------------------------------------------------------------
+v1.0  of 17 Aug 1998 - Original version of dialogue box that is displayed when a
+                       new rule is applied to ask user how the rule is to be
+                       handled.
+v1.1  of 20 Apr 2003 - Changed font size from 10 to 8 (Win 95 style).
+                     - Removed glyphs from OK, Cancel and Help buttons and set
+                       size to 75x25.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Calc.pas
+--------------------------------------------------------------------------------
+v1.0  of 18 May 1992 - Original Turbo Pascal DOS version program named Life.pas.
+                       This source file contained the whole program.
+v2.0  of 03 Mar 1997 - Heavily revised to contain only the code that performs
+                       the Game of Life calculations
+                     - Derived from v1.0's Life.pas altered to remove main loop
+                       (to make suitable for being event driven).
+                     - Removed all user input and display routines.
+                     - Renamed from Life.pas to Calc.pas.
+v3.0  of 26 Jul 1997 - Re-wrote this game engine as a class TGameOfLife.
+                     - Corrected a potential bug which would have appeared if
+                       ever the game board became rectangular rather than
+                       square, due to incorrect referencing of row & columns in
+                       main grid array.
+                     - Re-wrote the way in which changes to the grid on a new
+                       generation are recorded by using a separate mechanism for
+                       births and deaths.
+v3.1  of 28 Jul 1997 - Added new exception EGameOfLife for use by new methods to
+                       trap errors.
+                     - Error message strings are now read from resources using
+                       constants from Resource.inc.
+                     - Added new methods Assign, LoadFromFile & SaveToFile to
+                       allow copying of class instances and loading game from
+                       and saving game to files.
+                     - Each file is now marked with and verified using a
+                       "watermark" string.
+v3.2  of 21 Feb 1998 - Added call to inherited Create in TGameOfLife constructor
+                       to fix bug.
+v3.3  of 27 Mar 1998 - Added facility to record age of each life-form.
+v3.4  of 16 Aug 1998 - Added facility to use custom birth and death rules by
+                       means of a Rules property.
+                     - Also added an OnRuleChange event to notify callers of
+                       rule changes.
+v3.5  of 20 Apr 2003 - Fixed bug caused by range of loop control variable that
+                       causes problems when compiled as 32 bit.
+                     - Deleted redundant local variables.
+                     - Reformatted using current coding style.
+                     - Replaced use of PJ Library TextFile unit with native
+                       Pascal text file handling.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Colours.pas
+--------------------------------------------------------------------------------
+v1.0  of 17 Aug 1998 - New unit that provides a singleton instance of a class
+                       that manages the list of colour schemes in the program's
+                       ini file, along with a class that encapsulates a colour
+                       scheme.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+ColSchm.pas
+--------------------------------------------------------------------------------
+
+v1.0  of 22 Jul 1997 - Original version (named Setup.pas) that provides a
+                       dialogue box that allows the user to configure the Game
+                       of Life grid's colour scheme.
+v1.1  of 25 Jul 1997 - Added facility to load and save colour schemes to the
+                       program's ini file and to display the available schemes
+                       in a combo box.
+v1.2  of 26 Jul 1997 - Fixed colour scheme combo box's behaviour so that
+                       selecting the same colour scheme again will cause the
+                       scheme to re-load.
+                     - Changed buttons to display glyphs.
+v1.3  of 28 Jul 1997 - Resized buttons and realligned and resized window to
+                       conform to standards of other dialogue boxes.
+                     - Warning dialogue that displays when overwriting scheme is
+                       now a confirmation dialog.
+v2.0  of 21 Feb 1998 - Major revision.
+                     - Now clears scheme name once a scheme has been altered.
+                     - Removed button used to Save modified schemes with same]
+                       name.
+                     - Prevented user from overwriting Default scheme or saving
+                       a new scheme with that name.
+                     - Default scheme is now created automatically regardless of
+                       presence of ini file.
+                     - Removed "Default Colours" button now that Default scheme
+                       specifies them and can't be edited programatically.
+                     - Improved facility to show current scheme in Setup
+                       dialogue even when a scheme was changed and dialogue
+                       cancelled.
+                     - Any un-named edited scheme which is used for main display
+                       is now saved to ini fileon closing and used at next
+                       start-up.
+                     - User is now warned that an un-saved edited scheme will be
+                       lost if user selects another scheme.
+                     - Provided a warning when user if users tries to overwrite
+                       a named colour scheme.
+                     - Improved validation and messages relating to
+                     - Added new "Delete" button to delete a non-default named
+                       scheme.
+v2.1  of 21 Feb 1998 - Changed to use custom query dialogue box to get name of
+                       a new colour scheme instead of using VCL InputQuery.
+v2.2  of 22 Feb 1998 - Added new public property that indicates if the user has
+                       actually changed the scheme.
+v2.2a of 22 Feb 1998 - Form changes:
+                       - Resized form and buttons and arranged controls to
+                         conform to a standard layout.
+                       - Form no longer displays at screen centre.
+                       - Changed to use a lightweight font.
+                       - Added system menu.
+v2.3  of 27 Mar 1998 - Retitled dialogue box "Colour Schemes".
+                     - Added help button to dialogue box and its error and
+                       confirmation message boxes that call into context
+                       sensitive help, using help context numbers provided by an
+                       include file.
+                     - Reduced height of buttons.
+                     - Made it impossible to overwrite default colour scheme and
+                       extended list of reserved scheme names to avoid clashes
+                       with new ini file section names.
+                     - Added facility to read state of main form's command bar
+                       from ini file.
+                     - Added new ColourSchemeName property that exposes the name
+                       of any current colour scheme.
+v2.4  of 29 Mar 1998 - Added facility to access ini file to get information
+                       about which command buttons to display.
+                     - Slightly increased size of some buttons to allow correct
+                       display of glyphs.
+v2.5  of 29 Mar 1998 - Added facility to interogate ini file for information
+                       about whether status bar should be hidden or displayed.
+v2.6  of 02 Apr 1998 - Repurposed unit to deal only with the customisation of
+                       colour schemes, removing all responsibility for exposing
+                       ini file settings to another unit. Persistent settings
+                       that relate to colour schemes are now accessed via the
+                       ConfigFile global object provided by the Config unit.
+                     - Renamed file from Setup.pas to ColSchm.pas and renamed
+                       form to reflect its new specialised purpose.
+v3.0  of 17 Aug 1998 - Adapted to customise and use generic dialogue box defined
+                       in SaveIni unit for Save Scheme dialogue box instead of
+                       previous dedicated dialogue.
+                     - "SYSTEM" and "INIT" are no longer prohibited scheme names
+                       because new structure for ini file now permits their use.
+                     - Totally redesigned layout of dialogue box and made scheme
+                       combo box show thumbnail views of colour schemes
+                       alongside names, which can now wrap over two lines.
+                     - Made grid appear raised.
+                     - Corrected bug that drew life-forms off-centre.
+                     - Code was substantially refactored to use SchemesList
+                       object from Colours unit to manage schemes.
+                     - Improved coding for ColourIndex method.
+                     - Changed include directive re move of help include file
+                       into Help subdirectory.
+v3.1  of 20 Apr 2003 - Reduced font size from 10pt to 8pt to conform with Win95
+                       styling.
+                     - Removed glyphs from OK, Cancel and Help buttons and
+                       resized them to 75x25.
+                     - Modified drop down owner draw colour combo to suit
+                       smaller font size).
+                     - Deleted some unused variables.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Config.pas
+--------------------------------------------------------------------------------
+v1.0  of 02 Apr 1998 - Original version of unit that implements a class that
+                       encapsulates program configuration and persists it via
+                       the program's ini file.
+v2.0  of 16 Aug 1990 - Significant update, adding numerous properties to access
+                       rule information in ini file.
+                     - Changed colour scheme ini file access section to use same
+                       section naming methodology used for rules section. This
+                       reduces the number of reserved names that can't be used
+                       to name rule and colour schemes at the cost of making the
+                       ini file format incompatible with earlier versions.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+EditCBar.pas
+--------------------------------------------------------------------------------
+v1.0  of 29 Mar 1998 - Original version of unit that implements a dialogue box
+                       that allows user to edit the buttons that appear on the
+                       program's command bar.
+v1.1  of 02 Apr 1998 - Changed to use Config instead of Setup unit to access
+                       persistent configuration data.
+v1.2  of 16 Aug 1998 - Revised tab order of dialogue box.
+                     - Changed button spacing and button sizing to reflect new
+                       command bar appearance following introduction of new rules
+                       button.
+                     - Changed include directive re move of help include file
+                       into Help subdirectory.
+v1.3  of 20 Apr 2003 - Changed form colour to button face colour from silver.
+                     - Removed glyphs from OK, Cancel & Help buttons and reduced
+                       their size to 75x25.
+                     - Reduced font size from 10pt to 8pt to conform with Win95
+                       styling.
+                     - Added code to colour button glyphs to reflect button
+                       colour given by active Windows colour scheme. Revised
+                       button images were required to do this.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+EditRule.pas
+--------------------------------------------------------------------------------
+v1.0  of 17 Aug 1998 - Original version of unit that implements a dialogue box
+                       that allows user to create, edit and save new rules and
+                       to select a rule to be used by current game. Persists
+                       rules via the program's ini file.
+v1.1  of 20 Apr 2003 - Removed glyphs from Close & Help buttons and reduced
+                       their size to 75x25.
+                     - Reduced font size from 10pt to 8pt to conform with Win95
+                       styling.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+ExplRule.pas
+--------------------------------------------------------------------------------
+v1.0  of 17 Aug 1998 - Original version of unit that implements a dialogue box
+                       that explains, in English, the current rule displayed in
+                       the Edit Rule dialogue box.
+v1.1  of 20 Apr 2003 - Removed glyphs from Close & Help buttons and reduced
+                       their size to 75x25.
+                     - Reduced font size from 10pt to 8pt to conform with Win95
+                       styling.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help.pas
+--------------------------------------------------------------------------------
+v1.0  of 03 Mar 1997 - Original version of unit that implemented a dialogue box
+                       that displays help on using the program.
+v1.1  of 21 Jul 1997 - Removed caption from form and set it at run-time to be
+                       same as application title plus "- Help".
+                     - Removed initial text from memo component.
+                     - Changed caption of "Cancel" button to "Done" and made it
+                       both the default and cancel button.
+v1.2  of 21 Jul 1997 - Changed means of loading help text into memo from loading
+                       it dynamically at run time to loading it at design time.
+                     - Restyled form and moved "Done" button.
+v1.2a of 22 Jul 1997 - Added description of new Set up facility to help memo.
+v1.2b of 26 Jul 1997 - Added full description of Setup dialog to help memo.
+v1.3  of 28 Jul 1997 - Added to and reorganised help text.
+                     - Added button to display about box.
+v1.3a of 21 Feb 1998 - Updated help memo text to describe latest program
+                       changes.
+v1.4  of 22 Feb 1998 - Resized buttons.
+                     - Changed to a lightweight form font.
+                     - Restyled dialogue box to conform to program standards.
+                     - Made memo box a tab stop and altered tab order.
+                     - Form no longer forced to display at screen centre.
+                     - Removed default button status from Done button.
+                     - Included elipsis on About button.
+                     - Added About box component to replace use of project's
+                       custom about box and changed related code accordingly.
+                       Also added code to enable about box to display version
+                       information etc. from resources.
+                     - Added system menu.
+         27 Mar 1998 - Removed from project.
+
+--------------------------------------------------------------------------------
+Life.dpr
+--------------------------------------------------------------------------------
+v1.0  of 03 Mar 1997 - Original version of project file used for Delphi
+                       implementations.
+v1.1  of 21 Jul 1997 - Added program title.
+v1.2  of 22 Jul 1997 - Added new Setup.pas unit.
+v1.3  of 28 Jul 1997 - Added new units: About, Replay and SaveWhat.
+v1.4  of 22 Feb 1998 - Added new SaveSchm unit.
+v1.5  of 22 Feb 1998 - Removed About unit from project. About box now implmented
+                       via a 3rd party component.
+v1.6  of 27 Mar 1998 - Removed Help unit from project.
+                     - Added reference to Life.hlp help file - this replaces
+                       help dialog.
+v1.7  of 29 Mar 1998 - Added new Shared and EditCBar units to project.
+v1.8  of 02 Apr 1998 - Added new Config unit
+                     - Renamed Setup unit as ColSchm.
+v1.9  of 17 Aug 1998 - Added new units: Rules, EditRule, AppRule, ExplRule and
+                       Colours.
+                     - Renamed SaveSchm unit as SaveIni.
+                     - Moved Resource.res directive from MainForm unit and added
+                       new resource file include directive for Version.res.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+MainForm.pas
+--------------------------------------------------------------------------------
+v1.0  of 03 Mar 1997 - Original version of unit that implements GUI program's
+                       main window and all main display and user interaction
+                       code.
+v1.1  of 21 Jul 1997 - Enabled main window to be minimised.
+                     - Added keyboard shortcut for "Next Generation" button.
+                     - Changed form caption so that instead of being hardwired
+                     - Removed empty clauses, re-ordered source code and
+                       improved commenting.
+v1.2  of 21 Jul 1997 - Modified game board display to use a TImage component on
+                       which the board is drawn programmatically, instead of a
+                       TStringGrid. Various methods were added to achieve this.
+                     - The "Next Generation" button was given a glyph so that
+                       all buttons now have them.
+                     - Many display parameters were defined as constants.
+                     - Code was re-arranged and re-commented.
+v1.3  of 22 Jul 1997 - Added new "Set up" button to main form to display the new
+                       Set up dialogue.
+                     - Grid colours are now set when form is activated according
+                       to the values provided by the set up unit.
+v1.4  of 26 Jul 1997 - Updated to use new TGameOfLife class for game engine
+                       instead of old procedural interface.
+v1.4a of 26 Jul 1997 - Slightly repositioned some controls to improve appearance
+                       of form.
+v2.0  of 28 Jul 1997 - Rearranged form to incorporate a new Command bar that
+                       contains buttons not directly associated with game play.
+                     - Added new buttons and supporting code for new
+                       functionality: Load, Save, Clear, Snapshot and Replay.
+                     - The snapshot button now changes glyph according to
+                       whether a snapshot has been taken or not. These glyphs
+                       are loaded from resources and assigned to the button as
+                       required.
+v2.1  of 21 Feb 1998 - Fixed memory leak associated with failure to free
+                       snapshot and game related objects.
+                     - Snapshot button now displays anadditional "shutter" glyph
+                       while pressed.
+v3.0  of 21 Feb 1998 - Added support for mouse dragging in main window.
+                     - Refactor highlighting routines to handle extended
+                       selections and single cell highlighting in a similar way.
+                     - Added code to detect in either a single or multiple life
+                       forms are selected.
+                     - Added buttons to create or a destroy a rectangular block
+                       of life forms in one operation.
+                     - Changed "Generate" button glyph to be express its purpose
+                       better.
+v3.1  of 22 Feb 1998 - Re-wrote grid display mechanism to be more efficient.
+                     - Now utilise hour glass for long drawing operations.
+                     - Grid is now redrawn following use of setup dialogue if
+                       colours use actually change.
+v3.2  of 22 Feb 1998 - Changed to use a lightweight font.
+                     - Help dialogue is now positioned near to the Help speed
+                       button when dispplayed.
+v4.0  of 27 Mar 1998 - Added main menu for major commands, some of which also
+                       have speed button shortcuts.
+                     - Added pop-up menu to game grid, with relevant commands
+                       and context sensitive help.
+                     - Moved "Clear" button from command bar to main form and
+                       rearranged and re-sized remaining speed buttons.
+                     - Renamed "Load" speed button as "Open" and "Setup" button
+                       as "Colours".
+                     - Altered some button shortcuts to be more locical.
+                     - Altered titles of Open and Save dialogue boxes and
+                       provided help buttons and help contexts for them.
+                     - Added help contexts and buttons to confirmation dialog
+                       boxes displayed from main window.
+                     - Included a resource include file to allow access to
+                       resource strings and a help to include help context
+                       numbers.
+                     - Replaced former help dialogue box with a proper WinHelp
+                       system, with context sensitive help available from the F1
+                       key.
+                     - Fixed bug causing dragging problems when right mouse
+                       button pressed.
+                     - Added facility to show or hide the command bar.
+                     - Slightly altered some of the form's static text.
+                     - Added status bar showing name of current colour scheme.
+                     - Altered height and arrangement of game buttons.
+                     - Added about box component to display about box. This
+                       replaces the previous dedicated about box form unit.
+v4.1  of 27 Mar 1998 - Modified display to show age of currently selected life
+                       form.
+                     - Fixed bug that allowed cell selections to extend beyond
+                       the edge of the grid.
+v4.2  of 29 Mar 1998 - Added menu option to access command bar editor and added
+                       a pop-up menu to command bar.
+                     - Added code to display correct buttons on command bar.
+                     - Slightly altered size of game buttons to display glyphs
+                       properly.
+                     - Removed ellipsis from help command button.
+v4.3  of 29 Mar 1998 - Added menu option to allow status bar to be hidden or
+                       shown along with a pop-up menu on status bar that allows
+                       it to be hidden.
+v4.4  of 29 Mar 1998 - Added help menu items (and spacers) to pop-up menus of
+                       command bar and status bar that display relevant help
+                       topics.
+v4.5  of 02 Apr 1998 - Made status bars' pop-up menu's help change according to
+                       area of bar selected.
+                     - Colour scheme dialogue box is now displayed when colour
+                       scheme panel of status bar is double clicked.
+v4.6  of 02 Apr 1998 - Added reference to Shared unit to access some information
+                       previously supplied by Setup unit.
+                     - Changed to use ConfigFile global object, defined in
+                       Config unit, to get config information instead of getting
+                       it from Setup unit.
+v5.0  of 17 Aug 1998 - Major rewrite of code includung addition of some new
+                       components.
+                     - Rearranged some screen components as follows:
+                       - Reduced thickness of top border of command bar.
+                       - Added "Rule" section to status bar which shows name of
+                         current rule. Gave this section its own pop-up menu.
+                       - Changed grid to appear raised rather than lowered.
+                       - Fixed bug which drew life forms offset in square - they
+                         are now centred.
+                       - Prevented accelerator characters appearing in status
+                         panels.\
+                     - Changed menus as follows:
+                       - Added "rules" menu option to Options menu and to grid
+                         speed menu that displays "rules" dialogue.
+                       - Renamed Options | Edit Command Bar to Options | Command
+                         Bar.
+                       - Help contexts were added to all menu options - pressing
+                         F1 while menu option is highlighted gets help on the
+                         menu item.
+                     - Changed speed buttons as follows:
+                        - Added new Rules speed button to command bar.
+                        - Reduced size of buttons so all will fit on bar.
+                     - Added code to store rule from any game loaded, resolving
+                       name conflicts.
+                     - Added public method to allow other units to determine
+                       which rule is in use.
+                     - Ensured that dialogue boxes were positioned correctly and
+                       don't display off screen.
+                     - Altered status bar update code to use new Colours
+                       property of Colours dialogue box for colour scheme name.
+                     - Added version information component.
+                     - Updated About dialog box component to v2.2 and modified
+                       code to use it. Also linked About box component to
+                       version information component to get information to
+                       display.
+                     - Changed button height and style to conform with other
+                       bitmap buttons in application.
+                     - Removed Resource.res file directive to project file.
+                     - Added dialogue box to confirm program exit.
+                     - Refactored code that records grid colours into a class.
+                     - Changed include directive for help context include file
+                       to look in Help sub-directory.
+                     - Removed include directive for redundant Resource.inc
+                       file.
+v5.1  of 20 Apr 2003 - Updated unit references for about box and version
+                       information components to use changed unit names.
+                     - Deleted redundant constants and local variables.
+                     - Changed size of about box button to 75x25.
+                     - Reduced font size from 10pt to 8pt to conform with Win95
+                       styling.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Replay.pas
+--------------------------------------------------------------------------------
+v1.0  of 28 Jul 1997 - Original version of unit that implements a dialogue box
+                       that asks user whether to replay from start of game or
+                       from latest snapshot.
+v1.0a of 22 Feb 1998 - Resized form's buttons.
+                     - Changed to use a lightweight font.
+                     - Rearranged components on form to conform to program's
+                       standards.
+                     - Form no longer displays at screen centre.
+                     - Added system menu.
+v1.1  of 27 Mar 1998 - Added help button to form and used constants from help
+                       include file to assign required help context number.
+                     - Reduced height of buttons and resized form to accomodate
+                       changes.
+v1.2  of 16 Aug 1998 - Changed include directive for help context include file
+                       to look in Help sub-directory.
+v1.3  of 20 Apr 2003 - Removed glyphs from OK, Cancel & Help buttons and reduced
+                       their size to 75x25.
+                     - Reduced font size from 10pt to 8pt to conform with Win95
+                       styling.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Resource.inc
+--------------------------------------------------------------------------------
+v1.0  of 28 Jul 1997 - Include file that defines resource ID constants for
+                       resources defined in Resource.rc.
+v1.1  of 27 Mar 1998 - Added constant identifier of new resource string.
+v1.2  of 29 Mar 1998 - Added constant for new bitmap resources.
+v1.3  of 16 Aug 1998 - Added new RULESBTNBMP identifier for Rules button bitmap
+                       and renumbered other button bitmap IDs to sort new button
+                       in sequence.
+                     - Removed VERSION and COPYRIGHT constants - Version.rc now
+                       provides version information.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Resource.rc
+--------------------------------------------------------------------------------
+v1.0  of 28 Jul 1997 - Original version of resource source file used to create
+                       the resources used in the project.
+v1.1  of 21 Feb 1998 - Replaced internally recorded glyphs SNAPSHOT0 and
+                       SNAPSHOT1 bitmaps with 3 part glyph bitmaps stored
+                       externally and included in file. These new glyphs have
+                       same names as before.
+                     - Changed version number string to 3.1.
+v1.2  of 21 Feb 1998 - Changed version number string to 3.2.
+v1.3  of 21 Feb 1998 - Changed version number string to 3.3.
+v1.4  of 22 Feb 1998 - Changed version number string to 3.4.
+v1.5  of 22 Feb 1998 - Changed version number string to 3.5.
+v1.6  of 27 Mar 1998 - Changed version number string to 4.0.
+v1.7  of 27 Mar 1998 - Changed version number string to 4.1.
+v1.8  of 29 Mar 1998 - Changed version number string to 4.2.
+v1.9  of 29 Mar 1998 - Changed version number string to 4.3.
+v1.10 of 29 Mar 1998 - Changed version number string to 4.4.
+v1.11 of 02 Apr 1998 - Changed version number string to 4.5.
+v1.12 of 02 Apr 1998 - Changed version number string to 4.6.
+v1.13 if 16 Aug 1998 - Changed GOLFILEIDENT for new file format.
+                     - Reduced size of command button bitmaps.
+                     - Added new bitmap for new Rules button.
+                     - Removed VERSION and COPYRIGHT strings from string table.
+                       These are no longer required since version information is
+                       now provided by Version.rc.
+                     - Removed SNAPSHOTCHK bitmap - never used.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Rules.pas
+--------------------------------------------------------------------------------
+v1.0  of 16 Aug 1998 - Original version of unit that provides a set of classes
+                       that encapsulate all information relating to different
+                       Game Of Life rules.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+SaveIni.pas
+--------------------------------------------------------------------------------
+v1.0  of 21 Feb 1998 - Original version of unit, named SaveSchm.pas, that
+                       implemented a dialogue box that allowed user to choose
+                       from list of colour scheme names.
+v1.0a of 22 Feb 1998 - Centred OK & Cancel buttons horizontally and removed
+                       their keyboard shortcuts.
+                     - Removed system menu.
+v1.1  of 27 Mar 1998 - Added help button to form and used constants from help
+                       include file to assign required help context number.
+                     - Reduced height of buttons and resized form to accomodate
+                       changes.
+                     - Altered title of dialogue box to "Save Colour Scheme".
+v2.0  of 16 Aug 1998 - Changed name of unit to SaveIni.pas since this dialogue
+                       is now used to allow user to choose either colour or rule
+                       scheme names.
+                     - Added properties which allow the dialogue box to be
+                       customised with a new title and help context.
+v2.1  of 20 Apr 2003 - Removed glyphs from OK, Cancel & Help buttons and reduced
+                       their size to 75x25.
+                     - Reduced font size from 10pt to 8pt to conform with Win95
+                       styling.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+SaveWhat.pas
+--------------------------------------------------------------------------------
+v1.0  of 28 Jul 1997 - Original verion of unit that implements a dialog box that
+                       asks user to specify what state of the game is to be
+                       stored when game is being saved.
+v1.0a of 22 Feb 1998 - Resized buttons.
+                     - Changed to a lightweight form font.
+                     - Rearranged components to conform to program's layout
+                       standards.
+                     - Changed tab order.
+                     - Dialogue is no longer forced to display at the screen
+                       centre.
+                     - Added system menu.
+v1.1  of 27 Mar 1998 - Added help button to form and used constants from help
+                       include file to assign required help context number.
+                     - Reduced height of buttons and resized form to accomodate
+                       changes.
+                     - Changed dialogue box title to "Save Options".
+v1.2  of 16 Aug 1998 - Changed include directive re move of help include file
+                       into Help subdirectory.
+v1.3  of 20 Apr 2003 - Removed glyphs from OK, Cancel & Help buttons and reduced
+                       their size to 75x25.
+                     - Reduced font size from 10pt to 8pt to conform with Win95
+                       styling.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Shared.pas
+--------------------------------------------------------------------------------
+v1.0  of 29 Mar 1998 - Original version of unit that defined constants that
+                       describe command bar buttons that are shared between
+                       units.
+v1.1  of 02 Apr 1998 - Added various constants of use when working with colour
+                       schemes.
+                     - Added names for grid elements.
+v1.2  of 16 Aug 1998 - Added new constant for default rule name.
+                     - Increased number of command buttons and added a constant
+                       storing the name of the new Rules button.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Version.vi
+--------------------------------------------------------------------------------
+v1.0  of 17 Aug 1998 - Original version of version information file for Game Of
+                       Life 5.0.
+v1.1  of 20 Apr 2003 - Updated version number to 5.1.
+                     - NOTE that this file was NOT marked up as v1.1 in its
+                       comments, but there is no doubt that this is what it is.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help/Life.hpj
+--------------------------------------------------------------------------------
+v1.0  of 27 Mar 1998 - Original version of help project file.
+v1.1  of 29 Mar 1998 - Added new context number & string mappings for new help
+                       topics.
+v1.2  of 29 Mar 1998 - Added further new context number & string mappings for
+                       new help topics.
+v1.3  of 17 Aug 1998 - Removed log file creation command.
+                     - Added copyright message to help file.
+                     - Added new mappings for new context strings.
+v1.4  of 20 Apr 2003 - Updated copyright date range to 1992-2003.
+                     - Changed help file title to "DelphiDabbler game of Life".
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help/Life.inc
+--------------------------------------------------------------------------------
+v1.0  of 27 Mar 1998 - Original help include file containing constant
+                       declarations for help context numbers.
+v1.1  of 29 Mar 1998 - Added constant defintions for new context numbers.
+v1.2  of 29 Mar 1998 - Added constant defintions for further new context
+                       numbers.
+v1.3  of 17 Aug 1998 - Updated with new / renumbered context strings.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
+Help/Life.rtf
+--------------------------------------------------------------------------------
+         27 Mar 1998 - Original Win32 help content.
+         29 Mar 1998 - Added help topics for new command bar editor, its menu
+                       option and the new command bar pop-up menu.
+                     - Slightly modified help topics to ensure consistency of
+                       format.
+         29 Mar 1998 - Added help topics for new option to hide status bar and
+                       for its pop-up menu.
+                     - Added a help topic describing the status bar.
+                     - Ammended command bar topic with information about its
+                       pop-up menu.
+         29 Mar 1998 - Updated information relating to the command bar and
+                       status bar pop-up menus.
+         02 Apr 1998 - Updated status bar and related topics re new features.
+         17 Aug 1998 - Added and updated topics re the newly added rules.
+                     - Added new topic discussing the popup menus.
+         22 Nov 2015 - MOVED TO SVN.
+
+--------------------------------------------------------------------------------
